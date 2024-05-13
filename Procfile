@@ -1,1 +1,1 @@
-worker: vidig.py
+worker: python bot.py
