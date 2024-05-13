@@ -1,3 +1,2 @@
+requests
 telebot
-from telebot.types import InlineKeyboardButton as Btn, InlineKeyboardMarkup as Mak
-from telebot import types
