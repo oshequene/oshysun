@@ -1,4 +1,2 @@
-import requests
-import telebot
-from telebot.types import InlineKeyboardButton , InlineKeyboardMarkup
-from telebot import type
+telebot
+types
