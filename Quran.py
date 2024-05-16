@@ -25,7 +25,11 @@ def start(message):
     key.add(bot14)
     key.add(cam)
     bot.send_photo(message.chat.id,photo,f"""<strong>
-مرحبًا {name} ، اهلاً بـك في بوت القرأن الكريم ☕🤍 </strong>""",parse_mode="html",reply_to_message_id=message.message_id,reply_markup=key,timeout=3.5)	
+مرحبًا {name} ، اهلاً بـك في بوت القرأن الكريم ☕🤍
+• ارفع البوت ادمن في قناتك وافتح خاصية نشر الرسائل •
+• قم بأرسال ID الخاص بقناتك مسبوقًا بــِ (100-) •
+اذا كنت تجهل استخراج ايدي قناتك تواصل مع المطور 
+</strong>""",parse_mode="html",reply_to_message_id=message.message_id,reply_markup=key,timeout=3.5)	
     
 
 
