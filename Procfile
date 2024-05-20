@@ -1,1 +1,1 @@
-worker: python Quran.py
+worker: python sit.py
