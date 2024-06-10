@@ -1,22 +1,29 @@
 import telebot
-from telebot.types import InlineKeyboardButton as btn , InlineKeyboardMarkup as Mar
-'''
-تذكر مصريي هااا
-مبرمج ملف : @BRoK8
-قناتي : @Crrazy_8
-'''
-token = "6972476993:AAFFusJfPIiPmXUtN0KDypcAaEmYHXLsUNg"
+import requests
+
+token = "7091051319:AAH4QbiU9TzIzEOJdscJNyS48PxY_-3mNko"
 bot = telebot.TeleBot(token)
-bot_info = bot.get_me()
-btn = Mar().add(btn(text='• ضيفني لمجموعتك •',url=f"https://t.me/{bot_info.username}?startgroup=start"))
 
 @bot.message_handler(commands=['start'])
-def welcome(message):
-	bot.reply_to(message,'اهلاً انا بوت لتنظيم القروبات و القنوات .\nبعد كُل رسالة ارسل شرطة',reply_markup=btn)
+def send_welcome(message):
+    bot.reply_to(message, """اهلا في بوت يرسل رسائل الي رقم حساب تليكرام عن طريق رقم الهاتف 📱 ! ارسل الان رقمك مع رمز الدوله بهذه الشكل 👇🏻 .
+مثال : 96411111111111+""")
 
-@bot.message_handler(func=lambda message:True)
-def ss(message):
-	url = 'https://t.me/exixxx/69'
-	bot.send_animation(message.chat.id,url)
-	
-bot.polling(True)
+@bot.message_handler(func=lambda message: True)
+def verify_phone_number(message):
+    try:
+        phone = message.text
+        headers = {
+            'bot_id': '1288099309',
+            'origin': 'https://t.me',
+            'lang': 'en'
+        }
+        data = {
+            'phone': f'{phone}'
+        }
+        response = requests.post('https://oauth.tg.dev/auth/request?bot_id=1288099309&origin=https://t.me&lang=en', headers=headers,data=data)
+        bot.reply_to(message, 'تم ارسال الكود الى هذه رقم الهاتف 📨 !')
+    except Exception as e:
+        bot.reply_to(message, 'غير الرقم او ارسلة من جديد او الرقم غلط 📨 !')
+
+bot.polling(none_stop=True)
